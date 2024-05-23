@@ -1,12 +1,18 @@
-﻿using C_Tests.SealedTest;
+﻿using C_Tests.SourceCode;
 using static System.Console;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
-        DemoSealed();
+        //DemoSealed();
+        SingletonDemo();
+    }
 
+    private static void SingletonDemo()
+    {
+        WriteLine(Singleton.GetInstance());
+        WriteLine(Singleton.GetInstance());
     }
 
     private static void DemoSealed()

@@ -1,4 +1,4 @@
-namespace C_Tests.SealedTest
+namespace C_Tests.SourceCode
 {
     public class Parent
     {
