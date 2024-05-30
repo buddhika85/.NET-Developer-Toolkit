@@ -1,0 +1,6 @@
+@DiAPi_HostAddress = http://localhost:5286
+
+GET {{DiAPi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
