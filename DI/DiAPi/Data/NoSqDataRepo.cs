@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace DiAPi.Data
 {
-    public class NoSqDataRepo
+    public class NoSqDataRepo :  IDataRepo
     {
         public string ReturnData()
         {

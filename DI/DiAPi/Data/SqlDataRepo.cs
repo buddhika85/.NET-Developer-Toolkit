@@ -2,7 +2,7 @@
 
 namespace DiAPi.Data
 {
-    public class SqlDataRepo
+    public class SqlDataRepo : IDataRepo
     {
         public string ReturnData()
         {
