@@ -3,7 +3,6 @@
   "firstName": "James",
   "lastName": "Gunn",
   "age": 90,
-  "isAlive": true,
   "address": {
     "streetName": "1 Main Street",
     "city": "NY",
