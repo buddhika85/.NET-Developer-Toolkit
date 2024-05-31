@@ -7,5 +7,9 @@ namespace JsonSerializationDeerialization.Models
         public string LastName { get; set; } = null!;
         public int Age { get; set; }
         public bool IsAlive { get; set; }
+
+        public Address? Address { get; set; }
+
+        public IEnumerable<Phone>? Phones { get; set; }
     }
 }

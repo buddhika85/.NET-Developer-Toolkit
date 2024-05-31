@@ -2,12 +2,24 @@
 using JsonSerializationDeerialization.Models;
 using System.Text.Json;
 
-var person = new Person {
+var person = new Person 
+{
     Id = 1,
     FirstName = "James",
     LastName = "Gunn",
     Age = 90,
-    IsAlive = true
+    IsAlive = true,
+    Address = new Address
+    { 
+        StreetName = "1 Main Street", 
+        City = "NY", 
+        PostCode = "ABC123"
+    },
+    Phones = new List<Phone> 
+    { 
+        new Phone { PhoneNumber = "123456", Type = PhoneType.Home },
+        new Phone { PhoneNumber = "654321", Type = PhoneType.Mobile },
+    }
 };
 var opt = new JsonSerializerOptions 
 {
@@ -17,7 +29,7 @@ var opt = new JsonSerializerOptions
 
 var jsonString = JsonSerializer.Serialize<Person>(person, opt);
 // display
-WriteLine(jsonString);
+//WriteLine(jsonString);
 
 // write to a file
 var path = "C:\\BUDDHIKA\\Development\\Git\\.NET-Developer-Toolkit\\JsonSerializationDeerialization\\person.json";

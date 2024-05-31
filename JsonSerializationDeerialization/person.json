@@ -3,5 +3,22 @@
   "firstName": "James",
   "lastName": "Gunn",
   "age": 90,
-  "isAlive": true
+  "isAlive": true,
+  "address": {
+    "streetName": "1 Main Street",
+    "city": "NY",
+    "postCode": "ABC123"
+  },
+  "phones": [
+    {
+      "type": 1,
+      "homeOrMobile": "Home",
+      "phoneNumber": "123456"
+    },
+    {
+      "type": 2,
+      "homeOrMobile": "Mobile",
+      "phoneNumber": "654321"
+    }
+  ]
 }
