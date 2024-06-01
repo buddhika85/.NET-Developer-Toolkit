@@ -26,8 +26,8 @@ app.MapGet("api/v1/commands", async (AppDbContext context) => {
 });
 
 // get single
-app.MapGet("api/v1/commands/{id}", async (AppDbContext context, string id) => {
-    var command = await context.Commands.FirstOrDefaultAsync(x => x.CommandId == id);
+app.MapGet("api/v1/commands/{id}", async (AppDbContext context, int id) => {
+    var command = await context.Commands.FirstOrDefaultAsync(x => x.Id == id);
     if (command == null)
         return Results.NotFound($"No such command with {id}");
     return Results.Ok(command);
@@ -41,15 +41,34 @@ app.MapPost("api/v1/commands", async (AppDbContext context, Command command) => 
     return Results.Created($"api/v1/commands/{command.Id}", command);
 });
 
-// // update
-// app.MapGet("api/v1/commands", async (AppDbContext context) => {
-    
-// });
+// update
+app.MapPut("api/v1/commands/{id}", async (AppDbContext context, int id, Command command) => {
+    var commandFromDb = await context.Commands.FirstOrDefaultAsync(x => x.Id == id);
+    if (commandFromDb == null)
+        return Results.NotFound($"No such command with {id}");
 
-// // delete
-// app.MapGet("api/v1/commands", async (AppDbContext context) => {
-    
-// });
+    // update and save changes
+    commandFromDb.HowTo = command.HowTo;
+    commandFromDb.Platform = command.Platform;
+    commandFromDb.CommandLine = command.CommandLine;
+    await context.SaveChangesAsync();
+
+    // rest recomendation for out
+    return Results.NoContent();
+});
+
+// delete
+app.MapDelete("api/v1/commands", async (AppDbContext context, int id) => {
+    var commandToDelete = await context.Commands.FirstOrDefaultAsync(x => x.Id == id);
+    if (commandToDelete == null)
+        return Results.NotFound($"No such command with {id}");
+
+    context.Commands.Remove(commandToDelete);
+    await context.SaveChangesAsync();
+
+    // return resouce which was deleted
+    return Results.Ok(commandToDelete);
+});
 
 app.UseHttpsRedirection();
 app.Run();
