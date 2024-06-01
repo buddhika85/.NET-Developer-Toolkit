@@ -9,7 +9,7 @@ namespace JsonSerializationDeerialization.Models
         public string LastName { get; set; } = null!;
         public int Age { get; set; }
 
-        [JsonIgnore]
+        //[JsonIgnore]
         public bool IsAlive { get; set; }
 
         public Address? Address { get; set; }

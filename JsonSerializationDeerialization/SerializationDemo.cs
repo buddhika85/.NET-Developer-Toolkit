@@ -27,14 +27,14 @@ namespace JsonSerializationDeerialization
                     new Phone { PhoneNumber = "654321", Type = PhoneType.Mobile },
                 }
             };
-            
-            var opt = new JsonSerializerOptions
-            {
-                WriteIndented = true,
-                PropertyNamingPolicy = JsonNamingPolicy.CamelCase
-            };
 
-            var jsonString = JsonSerializer.Serialize<Person>(person, opt);
+            // var opt = new JsonSerializerOptions
+            // {
+            //     WriteIndented = true,
+            //     PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            // };
+
+            var jsonString = JsonSerializer.Serialize<Person>(person);
             // display
             //WriteLine(jsonString);
 

@@ -6,7 +6,7 @@ namespace JsonSerializationDeerialization.Models
     {
         public PhoneType Type { get; set; }
 
-        [JsonPropertyName("homeOrMobile")]
+        //[JsonPropertyName("homeOrMobile")]
         public string PhoneTypeStr => Type.GetPhoneDisplayableName();
         public string? PhoneNumber { get; set; }
     }
