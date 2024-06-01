@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace DtoAndAutmMapperDemoAPI.Dtos
 {
@@ -17,5 +14,7 @@ namespace DtoAndAutmMapperDemoAPI.Dtos
         
         // [Required]
         // public string DOB { get; set; } = null!;
+
+        public int Age { get; set; }
     }
 }
