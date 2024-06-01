@@ -7,7 +7,6 @@ namespace CommandAPIWithRepository.Data
 {
     public class SqlCommandRepo : ICommandRepo
     {
-
         private readonly AppDbContext _appDbContext;
 
         public SqlCommandRepo(AppDbContext appDbContext)

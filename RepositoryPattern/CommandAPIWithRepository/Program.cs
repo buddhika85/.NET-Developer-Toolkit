@@ -9,7 +9,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("SQLDbConnection")));  
-builder.Services.AddScoped<ICommandRepo, SqlCommandRepo>();
+
+builder.Services.AddScoped<ICommandRepo, SqlCommandRepo>();     // swapt to Redis, Mongo or any other 
 
 
 var app = builder.Build();
