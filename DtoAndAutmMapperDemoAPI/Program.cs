@@ -54,15 +54,12 @@ app.MapPost("api/v1/people", async (IPeopleRepository repo, PersonCreateDto pers
     return Results.Created($"api/v1/people/{person.Id}", mapper.Map<Person, PersonDto>(person));
 });
 
-app.MapPut("api/v1/people/{id}", async (IPeopleRepository repo, int id, Person person) => {
-    var personToUpdate = await repo.GetByIdAsync(id);
-    if (personToUpdate == null) 
+app.MapPut("api/v1/people/{id}", async (IPeopleRepository repo, int id, PersonUpdateDto personUpdateDto, IMapper mapper) => {
+    var personModel = await repo.GetByIdAsync(id);
+    if (personModel == null) 
         return Results.NotFound($"No person with ID {id}");
 
-    // manual object mapping
-    personToUpdate.FullName = person.FullName;
-    personToUpdate.Telephone = person.Telephone;
-    personToUpdate.DOB = person.DOB;
+    mapper.Map<PersonUpdateDto, Person>(personUpdateDto, personModel);
 
     await repo.SaveChangesAsync();
 
