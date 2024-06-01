@@ -43,8 +43,8 @@ app.MapPost("api/v1/commands", async (ICommandRepo repo, Command command) => {
 });
 
 // update
-app.MapPut("api/v1/commands/{id}", async (AppDbContext context, int id, Command command) => {
-    var commandFromDb = await context.Commands.FirstOrDefaultAsync(x => x.Id == id);
+app.MapPut("api/v1/commands/{id}", async (ICommandRepo repo, int id, Command command) => {
+    var commandFromDb = await repo.GetByIdAsync(id);
     if (commandFromDb == null)
         return Results.NotFound($"No such command with {id}");
 
@@ -52,7 +52,7 @@ app.MapPut("api/v1/commands/{id}", async (AppDbContext context, int id, Command 
     commandFromDb.HowTo = command.HowTo;
     commandFromDb.Platform = command.Platform;
     commandFromDb.CommandLine = command.CommandLine;
-    await context.SaveChangesAsync();
+    await repo.SaveChanges();
 
     // rest recomendation for out
     return Results.NoContent();
