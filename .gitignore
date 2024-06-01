@@ -484,3 +484,4 @@ $RECYCLE.BIN/
 *.swp
 RepositoryPattern/CommandAPINoRepository/appsettings.Development.json
 RepositoryPattern/CommandAPIWithRepository/appsettings.Development.json
+RepositoryPattern/CommandAPIWithRepository/appsettings.Development.json
