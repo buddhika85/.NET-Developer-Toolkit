@@ -15,7 +15,9 @@ namespace DtoAndAutmMapperDemoAPI.Profiles
             
             // http post
             // create Dto --> DB Entity - to save in DB
-            CreateMap<PersonCreateDto, Person>();
+            CreateMap<PersonCreateDto, Person>()
+                .ForMember(dest => dest.FullName,
+                opt => opt.MapFrom(src => $"{src.FirstName} {src.LastName}"));
         }
     }
 }
