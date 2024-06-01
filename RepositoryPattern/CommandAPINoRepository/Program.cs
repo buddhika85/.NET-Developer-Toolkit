@@ -33,10 +33,13 @@ app.MapGet("api/v1/commands/{id}", async (AppDbContext context, string id) => {
     return Results.Ok(command);
 });
 
-// // create
-// app.MapGet("api/v1/commands", async (AppDbContext context) => {
-    
-// });
+// create
+app.MapPost("api/v1/commands", async (AppDbContext context, Command command) => {
+    await context.Commands.AddAsync(command);
+    await context.SaveChangesAsync();
+    // rest conventions - rout to access new command and new command object
+    return Results.Created($"api/v1/commands/{command.Id}", command);
+});
 
 // // update
 // app.MapGet("api/v1/commands", async (AppDbContext context) => {
