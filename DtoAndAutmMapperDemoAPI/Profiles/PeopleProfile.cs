@@ -12,6 +12,10 @@ namespace DtoAndAutmMapperDemoAPI.Profiles
             CreateMap<Person, PersonDto>()
                 .ForMember(dest => dest.Age, 
                             opt => opt.MapFrom(src => src.YearsAlive));
+            
+            // http post
+            // create Dto --> DB Entity - to save in DB
+            CreateMap<PersonCreateDto, Person>();
         }
     }
 }

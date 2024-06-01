@@ -46,9 +46,12 @@ app.MapGet("api/v1/people/{id}", async (IPeopleRepository repo, int id, IMapper 
 
 
 
-app.MapPost("api/v1/people", async (IPeopleRepository repo, Person person) => {
+app.MapPost("api/v1/people", async (IPeopleRepository repo, PersonCreateDto personCreateDto, IMapper mapper) => {
+    Person person = mapper.Map<PersonCreateDto, Person>(personCreateDto);
     await repo.Create(person);
-    return Results.Created($"api/v1/people/{person.Id}", person);
+
+    // passing read DTO from created response
+    return Results.Created($"api/v1/people/{person.Id}", mapper.Map<Person, PersonDto>(person));
 });
 
 app.MapPut("api/v1/people/{id}", async (IPeopleRepository repo, int id, Person person) => {
