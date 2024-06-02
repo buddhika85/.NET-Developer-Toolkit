@@ -1,7 +1,13 @@
+using Microsoft.EntityFrameworkCore;
+using ToDoAPI.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// DI
+builder.Services.AddDbContext<AppDbContext>(opt => opt.UseInMemoryDatabase("ToDoDB"));
 
 var app = builder.Build();
 
