@@ -7,6 +7,8 @@ namespace Company.Function
 {
     public class HttpTrigger1
     {
+
+        private static string connectionString = "";
         private readonly ILogger<HttpTrigger1> _logger;
 
         public HttpTrigger1(ILogger<HttpTrigger1> logger)
@@ -15,10 +17,11 @@ namespace Company.Function
         }
 
         [Function("HttpTrigger1")]
-        public IActionResult Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
+        public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function, "get", "post")] HttpRequest req)
         {
-            _logger.LogInformation("C# HTTP trigger function processed a request.");
-            return new OkObjectResult("Welcome to Azure Functions!");
+            string requestBody = await new StreamReader(req.Body).ReadToEndAsync();
+
+            return new OkObjectResult("Payload received");
         }
     }
 }
