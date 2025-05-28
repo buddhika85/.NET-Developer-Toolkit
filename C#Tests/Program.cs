@@ -20,14 +20,16 @@ internal class Program
         //var box2 = new Box<double>(1.99);
         //var box3 = new Box<string>("string");
 
-        BaseClass baseObj = new BaseClass();
-        baseObj.Show(); // Calls BaseClass.Show()
+        //BaseClass baseObj = new BaseClass();
+        //baseObj.Show(); // Calls BaseClass.Show()
 
-        DerivedClass derivedObj = new DerivedClass();
-        derivedObj.Show(); // Calls DerivedClass.Show()
+        //DerivedClass derivedObj = new DerivedClass();
+        //derivedObj.Show(); // Calls DerivedClass.Show()
 
-        BaseClass refObj = new DerivedClass();
-        refObj.Show(); // Calls BaseClass.Show() (method hiding prevents overriding
+        //BaseClass refObj = new DerivedClass();
+        //refObj.Show(); // Calls BaseClass.Show() (method hiding prevents overriding)
+
+        BuilderDemo.Demo();
     }
 
     private static void SingletonDemo()

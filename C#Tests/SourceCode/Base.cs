@@ -16,7 +16,7 @@ namespace C_Tests.SourceCode
 
     class DerivedClass : BaseClass
     {
-        public new void Show() // Hides the base class method
+        public new void Show() 
         {
             Console.WriteLine("DerivedClass Show method");
         }
