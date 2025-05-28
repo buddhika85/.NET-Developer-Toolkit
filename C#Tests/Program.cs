@@ -7,7 +7,7 @@ internal class Program
     {
         //DemoSealed();
         //SingletonDemo();
-        
+
         // generics
         //var nums = new int []  { 1, 2, 3 };
         //var chars = new List<char> { 'a', 'b' };
@@ -16,9 +16,18 @@ internal class Program
         //WriteLine(Concatenate(chars, " | "));
         //WriteLine(Concatenate(strs, " "));
 
-        var box1 = new Box<int>(1);
-        var box2 = new Box<double>(1.99);
-        var box3 = new Box<string>("string");
+        //var box1 = new Box<int>(1);
+        //var box2 = new Box<double>(1.99);
+        //var box3 = new Box<string>("string");
+
+        BaseClass baseObj = new BaseClass();
+        baseObj.Show(); // Calls BaseClass.Show()
+
+        DerivedClass derivedObj = new DerivedClass();
+        derivedObj.Show(); // Calls DerivedClass.Show()
+
+        BaseClass refObj = new DerivedClass();
+        refObj.Show(); // Calls BaseClass.Show() (method hiding prevents overriding
     }
 
     private static void SingletonDemo()
