@@ -7,6 +7,18 @@ internal class Program
     {
         //DemoSealed();
         //SingletonDemo();
+        
+        // generics
+        //var nums = new int []  { 1, 2, 3 };
+        //var chars = new List<char> { 'a', 'b' };
+        //var strs = new List<string> { "quick", "brown", "fox"};
+        //WriteLine(Concatenate(nums, ","));
+        //WriteLine(Concatenate(chars, " | "));
+        //WriteLine(Concatenate(strs, " "));
+
+        var box1 = new Box<int>(1);
+        var box2 = new Box<double>(1.99);
+        var box3 = new Box<string>("string");
     }
 
     private static void SingletonDemo()
@@ -22,5 +34,10 @@ internal class Program
         {
             WriteLine(item);
         }
+    }
+
+    static string Concatenate<T>(IEnumerable<T> list, string seprator)
+    {
+       return string.Join(seprator, list);
     }
 }
