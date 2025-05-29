@@ -1,5 +1,3 @@
-using System;
-
 namespace C_Tests.SourceCode
 {
     public class Singleton
